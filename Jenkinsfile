@@ -11,6 +11,16 @@ pipeline {
         echo 'Nothing to build for static site'
       }
     }
+    stage('Docker Build') {
+    steps {
+        sh '''
+        docker build -t my-docs-site .
+        docker stop docs-container || true
+        docker rm docs-container || true
+        docker run -d --name docs-container -p 8081:80 my-docs-site
+        '''
+    }
+    }
     stage('Deploy') {
     steps {
         sh '''
