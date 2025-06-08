@@ -12,9 +12,15 @@ pipeline {
       }
     }
     stage('Deploy') {
-      steps {
-        sh 'sudo cp -r Jenkinsfile index.html style.css /var/www/html/'
-      }
+    steps {
+        sh '''
+        sudo mkdir -p /var/www/html
+        sudo cp -r Jenkinsfile index.html style.css /var/www/html/
+        '''
+    }
     }
   }
 }
+
+
+
