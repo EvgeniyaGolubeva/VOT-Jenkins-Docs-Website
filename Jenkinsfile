@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Clone') {
       steps {
-        git 'https://github.com/EvgeniyaGolubeva/VOT-Jenkins-Docs-Website.git'
+        git branch: 'main', url: 'https://github.com/EvgeniyaGolubeva/VOT-Jenkins-Docs-Website.git'
       }
     }
     stage('Build') {
